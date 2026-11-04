@@ -91,4 +91,5 @@ jobs:
 
           jf release-bundle-distribute $RB_NAME $RB_VERSION \
             --dist-rules=dist-rules.json \
+            --create-repo \
             --sync
