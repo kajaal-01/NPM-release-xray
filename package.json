@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "description": "Demo app for JFrog Frogbot V3 (do not deploy)",
+  "description": "Demo app for JFrog Frogbot V3",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
