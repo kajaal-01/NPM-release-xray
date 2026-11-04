@@ -84,7 +84,7 @@ jobs:
           cat > dist-rules.json <<EOF
           {
             "distribution_rules": [
-              { "site_name": "my-edge-node" }
+              { "site_name": "edgeimplementation" }
             ]
           }
           EOF
