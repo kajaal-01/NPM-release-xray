@@ -18,7 +18,7 @@ jobs:
       BUILD_NAME: my-npm-build
       BUILD_NUMBER: ${{ github.run_number }}
       RB_NAME: my-npm-release-bundle
-      RB_VERSION: 1.0.${{ github.run_number }}
+      RB_VERSION: 2.0.${{ github.run_number }}
       # Lets every jf command pick up build name/number automatically
       JFROG_CLI_BUILD_NAME: my-npm-build
       JFROG_CLI_BUILD_NUMBER: ${{ github.run_number }}
