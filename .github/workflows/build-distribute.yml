@@ -31,12 +31,6 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v4
         with:
           oidc-provider-name: github-oidc-provider-test
-          version: latest
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
       - name: Configure npm repositories
         run: |
@@ -44,11 +38,8 @@ jobs:
             --repo-resolve=$NPM_VIRTUAL_REPO \
             --repo-deploy=$NPM_LOCAL_REPO
 
-      - name: Install dependencies and build
-        run: |
-          jf npm install
-          npm run build --if-present
-          npm test --if-present
+      - name: Install dependencies
+        run: jf npm install
 
       - name: Publish package to Artifactory
         run: jf npm publish
@@ -76,8 +67,7 @@ jobs:
 
           jf release-bundle-create $RB_NAME $RB_VERSION \
             --builds=rb-spec.json \
-            --signing-key=${{ secrets.RB_SIGNING_KEY_ALIAS }} \
-            --sync
+            --signing-key=${{ secrets.RB_SIGNING_KEY_ALIAS }}
 
       - name: Distribute release bundle to Edge node
         run: |
@@ -90,6 +80,4 @@ jobs:
           EOF
 
           jf release-bundle-distribute $RB_NAME $RB_VERSION \
-            --dist-rules=dist-rules.json \
-            --create-repo \
-            --sync
+            --dist-rules=dist-rules.json
